@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html>
+    <head>
+        <!-- Recommended meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <!-- PyScript CSS -->
+        <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+        <!-- CSS for examples -->
+        <link rel="stylesheet" href="./assets/css/examples.css" />
+        
+        <!-- This script tag bootstraps PyScript -->
+        <script type="module" src="https://pyscript.net/releases/2024.5.2/core.js"></script>
+        
+        <!-- for splashscreen -->
+        <style>
+            #loading { outline: none; border: none; background: transparent }
+        </style>
+        <script type="module">
+            const loading = document.getElementById('loading');
+            addEventListener('py:ready', () => loading.close());
+            loading.showModal();
+        </script>
+
+        <!-- will be set via PyDom -->
+        <title id="header-title"></title>
+        <link rel="icon" type="image/png" href="./assets/favicon.png" />
+        <style>
+            /* Основные стили для header */
+            .header {
+                background-color: #333;
+                color: white;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            /* Стилизация кнопки Log In */
+            .login-button {
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+            }
+            
+            .login-button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>
+            <a class="title" id="page-title" href="/main" style="color: #ffffff">Идет загрузка...</a></h1>
+            <button class="login-button">Log In</button>
+        </div>
+        
+        <dialog id="loading">
+            <h1>Loading...</h1>
+        </dialog>
+
+        
+
+        <br />
+        
+        <!-- will be set via PyDom -->
+        <div id="page-message"></div>
+
+        <div id="pandas-output" hidden>
+            <h3>Output</h3>
+            <div id="pandas-output-inner"></div>
+        </div>
+
+
+
+        <section class="pyscript">
+            <script type="py" src="./main_py.py" config="./pyscript.toml" async></script>
+        </section>
+
+    </body>
+</html>
